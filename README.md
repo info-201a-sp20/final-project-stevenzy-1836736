@@ -9,3 +9,10 @@ Tuition
 - Rows: 2973
 - Cols: 10
 - Questions that this data can answer: Which state Adrian College is in? How much was the in-state tuition for Cornell University? How many rooms were there at Delta College?
+
+College Basketball
+- URL: https://www.kaggle.com/andrewsundberg/college-basketball-dataset
+- How data collected: Data for each year are from http://barttorvik.com/trankpre.php and combined into cbb.csv
+- Rows: 1758
+- Cols: 24
+- Questions that this data can answer: Which college has the highest rate of win? Which college has the best power rating? What's the chance of University of North Carolina beating Duke University?
