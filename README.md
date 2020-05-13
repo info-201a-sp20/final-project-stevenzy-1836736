@@ -12,7 +12,7 @@ https://www.kaggle.com/fivethirtyeight/fivethirtyeight-college-majors-dataset
 - Which college has the highest tuition?
 Which college has the highest rate of win?
 Which majors' employment rates are higher than food science?
-- Which colleges have their in-state-tuition higher than 15,000?
+- Which colleges have their in-state-tuition higher than $15,000?
 - To answer this question, we need to use dplyr. We should use the filter function to filter out the rows that fulfills the condition, and then use the pull function to get the names of the colleges. 
 
 ## Finding Data
