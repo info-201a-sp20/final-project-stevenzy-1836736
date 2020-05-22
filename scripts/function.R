@@ -3,6 +3,7 @@
 
 # A function that takes in a tuition cost dataset and returns summary info
 get_summary_info <- function(dataset) {
+  # create a list
   ret <- list()
   # the number of colleges
   ret$length <- length(dataset)
@@ -41,4 +42,4 @@ get_summary_info <- function(dataset) {
   ret$most_expensive_outstate <- dataset$name[dataset$out_of_state_tuition == 
                                                   max(dataset$out_of_state_tuition)]
   return (ret)
-} 
+}
