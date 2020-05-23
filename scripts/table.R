@@ -17,7 +17,7 @@ library("knitr")
 
 # function to return a table
 table_function <- function(df) {
-  new_df <- df %>%
+  new_df %>%
     mutate(cost_diff = out_of_state_total - in_state_total) %>%
     select(name, state, type, in_state_total, out_of_state_total, cost_diff) %>%
     group_by(type) %>%
@@ -31,18 +31,18 @@ table_function <- function(df) {
     "Out-state Cost",
     "Difference"))
   return(table)
-}
-
+  
 # public college that has the greatest difference between in-state cost
 # and out-state cost
-public_greatest_diff <- new_df %>%
-  filter(type == "Public", 
-         cost_diff == max(cost_diff)) %>%
-  pull(name)
-
+  public_greatest_diff <- new_df %>%
+    filter(type == "Public", 
+           cost_diff == max(cost_diff)) %>%
+    pull(name)
+  
 # private college that has the smallest difference between in-state cost
 # and out-state cost
-private_smallest_diff <- new_df %>%
-  filter(type == "Private", 
-         cost_diff == min(cost_diff)) %>%
-  pull(name)
+  private_smallest_diff <- new_df %>%
+    filter(type == "Private", 
+           cost_diff == min(cost_diff)) %>%
+    pull(name)
+}
