@@ -22,9 +22,9 @@ Our source:
 
 Our domain of interests primarily focus on datasets related to college life. We found three datasets before which included college-tuition dataset, college-basketball dataset and college-majors dataset. 
 
-Basically we're interested in this aspect because they are somehow connnected with our school life. By researching and analyzing those data, it is a great opportunity for us to have a more well-rounded understanding with regard to this. 
+Basically we're interested in this aspect because they are somehow connnected to our school life. By researching and analyzing those data, it is a great opportunity for us to have a more well-rounded understanding with regard to this. 
 
-Finally, by considering the details of three datasets. We choose the college-tuition data set as our main reasearch emphases. This dataset is both easily understandable and has sufficient data, which makes this dataset more reliable.  
+Finally, by considering the details of three datasets, we choose the college-tuition dataset as our main reasearch emphases. This dataset is both easily understandable and has sufficient data, which makes this dataset more reliable.  
 
 
 ## Summary Information
@@ -34,7 +34,7 @@ df <- read.csv("data/tuition_cost.csv", stringsAsFactors = FALSE)
 get_summary_info(df)
 ret <- get_summary_info(df)
 ```
-Based on the college-tuition dataset, there are **`r ret$length`** colleges in the dataset. Among them, there are **`r ret$num_public`** public schools and **`r ret$num_private`** private schools. There are **`r ret$num_for_profit`** schools run for profits. The average tuition for in-state students is **$`r ret$avg_instate_tuition`**  and for out-state students is **$`r ret$avg_out_of_state_tuition`**. The average tuition of public colleges for in-state students is **`r ret$avg_instate_public`**  and those for private colleges is **`r ret$avg_instate_private`**. 
+Based on our calculation, there are **`r ret$length`** colleges in the dataset. Among them, there are **`r ret$num_public`** public schools and **`r ret$num_private`** private schools. There are **`r ret$num_for_profit`** schools run for profits. The average tuition for in-state students is **$`r ret$avg_instate_tuition`**  and for out-state students is **$`r ret$avg_out_of_state_tuition`**. The average tuition of public colleges for in-state students is **`r ret$avg_instate_public`**  and those for private colleges is **`r ret$avg_instate_private`**. 
 
 The average tuition of public colleges for out-state students is 
  **`r ret$avg_outstate_public`**  and for private schools is **`r ret$avg_outstate_private`**. The university that has the highest in-state tuition is **`r ret$most_expensive_instate`** and The university that havs the highest out-state tuition is **`r ret$most_expensive_outstate`**. 
@@ -42,26 +42,26 @@ The average tuition of public colleges for out-state students is
 
 ## Table
 The purpose of this table is to compare the total cost of students by
-finding the difference of in-state total cost and out-of-state total cost. 
+finding the difference between in-state total cost and out-of-state total cost. 
 
 ```{r, echo=FALSE}
 table_function(df)
 ```
 
-The table issorted by the cost difference, from the highest to lowest, so we can see which college has the highest difference between in-state cost
-and out-state cost from the table. This table groups the college tuitions by its type, such as 'Public', 'Private', and 'For Profit'. So we can see more clearly the differece between each type of college and this group helps us get information easier from the table based on their types. 
+The table is sorted by the cost difference, from the highest to lowest, so we can see which college has the highest difference between in-state cost
+and out-state cost from the table. This table groups the college tuitions by its type, such as 'Public', 'Private', and 'For Profit'. So we can see more clearly the differece between each type of college, and this group helps us get information easier from the table based on their types. 
 
 ## Chart
 
 ### Chart 1
-This chart shows the relationship between in-state tuition and out-state tuition. With regard to colleges that are private, public or run for profits. 
+This chart shows the relationship between in-state tuition and out-state tuition with regard to colleges that are private, public, or run for profits. 
 
 ```{r, echo=FALSE}
 filtered <- filter(df, !is.na(room_and_board))
 point_plot(filtered)
 ```
 
-We choose this chart to express this relationship because color points make it clear showing what out-state and in-state are like in different school types. Besides that, The axis data is also helpful showing the tuition. 
+We choose this chart to express this relationship because color points make it clear showing what out-state and in-state are like in different school types. Besides that, the axis data are also helpful showing the tuition. 
 
 ### Chart 2 
 This chart shows the relationship between in-state tuition and room & boards in different colleges.
@@ -71,7 +71,7 @@ filtered <- filter(df, !is.na(room_and_board))
 hex_plot(filtered)
 ```
 
-We choose this chart in express information because this chart enables us to see clearly the relationship between tuition and rooms. Also, the color depth of each hexagon shows the number of colleges. 
+We choose this chart in expressing the information because this chart enables us to see clearly the relationship between tuition and rooms. Also, the color depth of each hexagon shows the number of colleges. 
 
 ### Chart 3
 This chart shows the relationship between in-state tuition and degree length in three different types of school. 
