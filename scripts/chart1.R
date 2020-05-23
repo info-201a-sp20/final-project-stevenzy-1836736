@@ -1,6 +1,6 @@
 library(ggplot2)
 
-tuition <- read.csv("tuition_cost.csv", stringsAsFactors = FALSE)
+# tuition <- read.csv("tuition_cost.csv", stringsAsFactors = FALSE)
 
 # returns a graph that plots in-state tuition and out-state tuition.
 point_plot <- function(df) {

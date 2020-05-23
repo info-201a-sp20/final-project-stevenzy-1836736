@@ -1,9 +1,9 @@
 library(ggplot2)
 library(dplyr)
 
-tuition <- read.csv("tuition_cost.csv", stringsAsFactors = FALSE)
+# tuition <- read.csv("tuition_cost.csv", stringsAsFactors = FALSE)
 
-filtered <- filter(tuition, !is.na(room_and_board))
+# filtered <- filter(tuition, !is.na(room_and_board))
 
 # Returns a graph that shows in-state tuition vs degree length, separated by type of universities.
 bin_plot <- function(df) {
