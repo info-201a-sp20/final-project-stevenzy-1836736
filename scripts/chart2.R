@@ -1,10 +1,6 @@
 library(ggplot2)
 library(dplyr)
 
-# tuition <- read.csv("tuition_cost.csv", stringsAsFactors = FALSE)
-
-# pass "filtered" as param
-# filtered <- filter(tuition, !is.na(room_and_board))
 
 # returns a graph that plots in-state tuition and room & board.
 hex_plot <- function(df) {
