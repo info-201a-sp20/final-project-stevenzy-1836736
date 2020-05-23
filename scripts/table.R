@@ -18,17 +18,13 @@ library("knitr")
 # function to return a table
 table_function <- function(df) {
   new_df <- df %>%
-    select(name, state, type, in_state_total, out_of_state_total) %>%
+    #select(name, state, type, in_state_total, out_of_state_total) %>%
     mutate(cost_diff = out_of_state_total - in_state_total) %>%
     group_by(type) %>%
     arrange(-cost_diff)
-  
-  table <- kable(new_df, col.names = c(
-    "Name",
-    "State",
-    "Type",
-    "In-state Cost",
-    "Out-state Cost"))
+#  return(new_df)
+
+  table <- kable(new_df, col.names = colnames(new_df))
   return(table)
 }
 
