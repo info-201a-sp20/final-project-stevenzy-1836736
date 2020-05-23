@@ -31,10 +31,22 @@ df <- read.csv("data/tuition_cost.csv", stringsAsFactors = FALSE)
 get_summary_info(df)
 ret <- get_summary_info(df)
 ```
-Based on the college-tuition dataset, there are **`r ret$length`** colleges in the dataset. Among them, there are **`r ret$num_public`** public schools and **`r ret$num_private`** private schools. There are **`r ret$num_for_profit`** schools run for profits. The average tuition for in-state students is **$`r ret$avg_instate_tuition`**  and for out-state students is **$`r ret$avg_out_of_state_tuition`**. The average tuition of public colleges for in-state students is **$`r ret$avg_instate_public`**  and those for private colleges is **$`r ret$avg_instate_private`**. The average tuition of public colleges for out-state students is **$`r ret$avg_outstate_public`**  and for private schools is **$`r ret$avg_outstate_private`**. The university that has the highest in-state tuition is **`r ret$most_expensive_instate`** and The university that havs the highest out-state tuition is **`r ret$most_expensive_outstate`**. 
+Based on the college-tuition dataset, there are **`r ret$length`** colleges in the dataset. Among them, there are **`r ret$num_public`** public schools and **`r ret$num_private`** private schools. There are **`r ret$num_for_profit`** schools run for profits. The average tuition for in-state students is **$`r ret$avg_instate_tuition`**  and for out-state students is **$`r ret$avg_out_of_state_tuition`**. The average tuition of public colleges for in-state students is **`r ret$avg_instate_public`**  and those for private colleges is **`r ret$avg_instate_private`**. 
+
+The average tuition of public colleges for out-state students is 
+ **`r ret$avg_outstate_public`**  and for private schools is **`r ret$avg_outstate_private`**. The university that has the highest in-state tuition is **`r ret$most_expensive_instate`** and The university that havs the highest out-state tuition is **`r ret$most_expensive_outstate`**. 
+
 
 ## Table
+The purpose of this table is to compare the total cost of students by
+finding the difference of in-state total cost and out-of-state total cost. 
 
+```{r, echo=FALSE}
+table_function(df)
+```
+
+The table issorted by the cost difference, from the highest to lowest, so we can see which college has the highest difference between in-state cost
+and out-state cost from the table. This table groups the college tuitions by its type, such as 'Public', 'Private', and 'For Profit'. So we can see more clearly the differece between each type of college and this group helps us get information easier from the table based on their types. 
 
 ## Chart
 

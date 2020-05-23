@@ -22,7 +22,7 @@ table_function <- function(df) {
     mutate(cost_diff = out_of_state_total - in_state_total) %>%
     group_by(type) %>%
     arrange(-cost_diff) %>%
-    top_n(20)
+    head(20)
   
   table <- kable(new_df, col.names = c(
     "Name",
