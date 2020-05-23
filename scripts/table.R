@@ -18,8 +18,8 @@ library("knitr")
 # function to return a table
 table_function <- function(df) {
   new_df <- df %>%
-    select(name, state, type, in_state_total, out_of_state_total) %>%
     mutate(cost_diff = out_of_state_total - in_state_total) %>%
+    select(name, state, type, in_state_total, out_of_state_total, cost_diff) %>%
     group_by(type) %>%
     arrange(-cost_diff)
   
@@ -28,7 +28,8 @@ table_function <- function(df) {
     "State",
     "Type",
     "In-state Cost",
-    "Out-state Cost"))
+    "Out-state Cost",
+    "Difference"))
   return(table)
 }
 
