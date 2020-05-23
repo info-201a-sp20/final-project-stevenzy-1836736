@@ -6,6 +6,9 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(knitr)
+
 source("scripts/function.R")
 source("scripts/chart1.R")
 source("scripts/chart2.R")
@@ -30,7 +33,7 @@ ret <- get_summary_info(df)
 ```
 Based on the college-tuition dataset, there are **`r ret$length`** colleges in the dataset. Among them, there are **`r ret$num_public`** public schools and **`r ret$num_private`** private schools. There are **`r ret$num_for_profit`** schools run for profits. The average tuition for in-state students is **$`r ret$avg_instate_tuition`**  and for out-state students is **$`r ret$avg_out_of_state_tuition`**. The average tuition of public colleges for in-state students is **$`r ret$avg_instate_public`**  and those for private colleges is **$`r ret$avg_instate_private`**. The average tuition of public colleges for out-state students is **$`r ret$avg_outstate_public`**  and for private schools is **$`r ret$avg_outstate_private`**. The university that has the highest in-state tuition is **`r ret$most_expensive_instate`** and The university that havs the highest out-state tuition is **`r ret$most_expensive_outstate`**. 
 
-## 
+## Table
 
 
 ## Chart
