@@ -17,6 +17,9 @@ source("scripts/table.R")
 ```
 
 ## Introduction
+Our source: 
+[data source](https://www.kaggle.com/jessemostipak/college-tuition-diversity-and-pay)<br>
+
 Our domain of interests primarily focus on datasets related to college life. We found three datasets before which included college-tuition dataset, college-basketball dataset and college-majors dataset. 
 
 Basically we're interested in this aspect because they are somehow connnected with our school life. By researching and analyzing those data, it is a great opportunity for us to have a more well-rounded understanding with regard to this. 
