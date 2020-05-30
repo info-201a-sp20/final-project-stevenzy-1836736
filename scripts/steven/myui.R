@@ -24,12 +24,9 @@ ui <- fluidPage(
   h2("Choose what type of college you'd like to see the result of"),
   
   
-  textInput(
-    inputId = "title",
-    label = h3("Enter the title you want for the graph"),
-  ),
+
   plotlyOutput(
-    outputId = "demoplotly"
+    outputId = "plot1"
   )
   
   

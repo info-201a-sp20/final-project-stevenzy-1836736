@@ -21,7 +21,7 @@ server <- function(input, output) {
   
   
   
-  output$demoplotly <- renderPlotly({
+  output$plot1 <- renderPlotly({
     plot1 <- ggplot(data = read.csv("tuition_cost.csv", stringsAsFactors = F)) +
                     geom_point(mapping = aes(x = in_state_total, y = out_of_state_total, color = type)) +
       labs(
