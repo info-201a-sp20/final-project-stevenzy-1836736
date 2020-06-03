@@ -38,13 +38,7 @@ server <- function(input, output) {
         )
     })
     
-    output$college_types <- renderUI({
-      type_college <- unique(df$type)
-      #   type_college <- statewise_college[order(statewise_college)]
-      selectInput('school', label = "College Option (Select or Type)", 
-                  choices =  c("", as.list(type_college)), 
-                  multiple = F, selected = F)
-    })
+
     
     output$plot1 <- renderPlotly({
       selected_data <- tuition %>%
