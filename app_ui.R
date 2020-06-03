@@ -8,13 +8,7 @@ library(leaflet)
 library(plotly)
 
 tuition <- read.csv("data/tuition_cost.CSV", stringsAsFactors = FALSE)
-tuition <- filter(tuition, !is.na(tuition$room_and_board))
-college_type <- unique(tuition$type)
-allstate_df <- tuition %>%
-  filter(!is.na(tuition$state))
-
-all.state <- unique(allstate_df$state)
-
+all.state <- unique(tuition$state)
 
 
 ui <- navbarPage( 
@@ -38,11 +32,14 @@ ui <- navbarPage(
   tags$li("What is geographical distribution like with regard to
            different school types?",
           tags$ul("To answer this question, we used locations of
-                  three different school types in different states")),
-  tags$li("Question 2",
-          tags$ul("To answer this question, we used ")),
+                  three different school types in different states.")),
+  tags$li("Is there any difference between in and out-of state tuition
+          for each type of school? If so, how different?",
+          tags$ul("To answer this question, we used a visualization by plotting
+                  total in-state tuition vs total out-of-state tuition to see
+                  the relationship between them.")),
   tags$li("Question 3",
-          tags$ul("To answer this question, we used ")),
+          tags$ul("To answer this question, we used ...")),
   setBackgroundColor(
     color = "LightBlue",
     gradient = c("linear", "radial"),
@@ -67,29 +64,7 @@ ui <- navbarPage(
              Users could choose their like of state and find out the result. ")
     )
   )
-),
-
-tabPanel(
-  "Scatterplot",
-  titlePanel("Visual Representation of the Difference between in vs out State Tuition by Public and Private College"),
-  p(
-    "The following graph shows in-state and out-of-state tuition separately of public, private, and for-profit colleges.",
-  ), 
-  
-  sidebarLayout(
-    sidebarPanel(
-      # select the type of user's interest
-      selectInput(inputId = "Type",
-                  label = "Choose the type of college of your interest",
-                  choices = college_type), width = 4),
-    
-    mainPanel(
-      plotlyOutput(outputId = "plot1"))
-  )
 )
-
-
-
 )
 
 
