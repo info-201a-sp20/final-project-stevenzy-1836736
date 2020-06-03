@@ -37,4 +37,17 @@ server <- function(input, output) {
           yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
         )
     })
+    
+    output$plot1 <- renderPlotly({
+      selected_data <- tuition %>%
+        filter(type == input$Type)
+      plot1 <- ggplot(data = selected_data) +
+        geom_point(mapping = aes(x = in_state_total, y = out_of_state_total, color = type)) +
+        labs(
+          title = "In-state vs Out-of-State Tuition",
+          x = "In-State Tuition",
+          y = "Out-of-State Tuition"
+        )
+      plot1 <- ggplotly(plot1)
+    })
 }

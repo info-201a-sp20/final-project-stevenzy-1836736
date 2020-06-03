@@ -65,7 +65,31 @@ ui <- navbarPage(
              Users could choose their like of state and find out the result. ")
     )
   )
+),
+
+tabPanel(
+  "Scatterplot",
+  titlePanel("Visual Representation of the Difference between in vs out State Tuition by Public and Private College"),
+  p(
+    "The following graph shows the public colleges in __ ",
+    strong("bold"),
+    " text."
+  ), 
+  
+  sidebarLayout(
+    sidebarPanel(
+      # select the type of user's interest
+      selectInput(inputId = "Type",
+                  label = "Choose the type of college of your interest",
+                  choices = college_type), width = 4),
+    
+    mainPanel(
+      plotlyOutput(outputId = "plot1"))
+  )
 )
+
+
+
 )
 
 

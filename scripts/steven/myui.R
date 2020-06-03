@@ -1,3 +1,7 @@
+tuition <- read.csv("tuition_cost.CSV", stringsAsFactors = FALSE)
+tuition <- filter(tuition, !is.na(tuition$room_and_board))
+college_type <- unique(tuition$type)
+
 
 ui <- fluidPage(
   h1("Visual Representation of the Difference between in vs out State Tuition by Public and Private College"), 
@@ -6,28 +10,17 @@ ui <- fluidPage(
     strong("bold"),
     " text."
   ), 
-  # h2("here are some example inputs"),
-  # radioButtons(
-  #   inputId = "radioInput",
-  #   label = h3("Demo radio buttons"),
-  #   choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-  #   selected = 1
-  # ),
-  # textInput(
-  #   inputId = "textInput",
-  #   label = h3("example text input"),
-  #   placeholder = "enter your text here"
-  # ),
-  # textOutput(
-  #   outputId = "message"
-  # ),
-  h2("Choose what type of college you'd like to see the result of"),
   
-  
-
-  plotlyOutput(
-    outputId = "plot1"
-  )
+  sidebarLayout(
+    sidebarPanel(
+      # select the type of user's interest
+      selectInput(inputId = "Type",
+                  label = "Choose the type of college of your interest",
+                  choices = college_type), width = 4),
+    
+     mainPanel(
+       plotlyOutput(outputId = "plot1"))
+   )
   
   
 )
