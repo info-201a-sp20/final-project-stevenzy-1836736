@@ -4,10 +4,9 @@ library(shinyWidgets)
 library(dplyr)
 library(ggplot2)
 library(maps)
-library(leaflet)
+library(plotly)
 
 server <- function(input, output) {
-  
     output$PiePlot <- renderPlotly({
       selected.data <- tuition %>%
         filter(state == input$State)
@@ -38,4 +37,4 @@ server <- function(input, output) {
           yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
         )
     })
-  }
+}

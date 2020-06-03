@@ -5,10 +5,10 @@ library(dplyr)
 library(ggplot2)
 library(maps)
 library(leaflet)
+library(plotly)
 
 tuition <- read.csv("data/tuition_cost.CSV", stringsAsFactors = FALSE)
 all.state <- unique(tuition$state)
-
 
 
 ui <- navbarPage( 

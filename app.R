@@ -1,8 +1,17 @@
 # Load libraries so they are available
-library("shiny")
+library(shiny)
+library(shinyWidgets)
+library(dplyr)
+library(ggplot2)
+library(maps)
+library(leaflet)
+library(plotly)
 
 source("app_ui.R")
 source("app_server.R")
 
 
-shinyApp(ui = app_ui, server = app_server)
+shinyApp(ui = ui, server = server)
+
+
+
