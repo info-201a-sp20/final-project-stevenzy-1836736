@@ -8,6 +8,8 @@ library(leaflet)
 library(plotly)
 
 tuition <- read.csv("data/tuition_cost.CSV", stringsAsFactors = FALSE)
+tuition <- filter(tuition, !is.na(tuition$room_and_board))
+college_type <- unique(tuition$type)
 allstate_df <- tuition %>%
   filter(!is.na(tuition$state))
 all.state <- unique(allstate_df$state)
@@ -70,9 +72,7 @@ tabPanel(
   "Scatterplot",
   titlePanel("Visual Representation of the Difference between in vs out State Tuition by Public and Private College"),
   p(
-    "The following graph shows the public colleges in __ ",
-    strong("bold"),
-    " text."
+    "The following graph shows in-state and out-of-state tuition separately of public, private, and for-profit colleges.",
   ), 
   
   sidebarLayout(

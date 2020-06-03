@@ -38,6 +38,8 @@ server <- function(input, output) {
         )
     })
     
+
+    
     output$plot1 <- renderPlotly({
       selected_data <- tuition %>%
         filter(type == input$Type)
