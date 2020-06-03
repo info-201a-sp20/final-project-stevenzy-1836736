@@ -22,9 +22,11 @@ ui <- navbarPage(
           and fees by college/university for 2018-2019, along with school type,
           degree length, state, in-state vs out-of-state."),
   tags$h3("Where the data is from:"),
-  tags$p("The data comes from many different sources but originally US Department 
+  tags$p("The data come from many different sources but originally US Department 
          community with powerful tools and resources to help users achieve their
-         data science goals."),
+         data science goals. The dataset was found ",
+         tags$a(href="https://www.chronicle.com/interactives/tuition-and-fees",
+                "The Cronicle of Higher Education"),),
   tags$h3("Questions:"),
   tags$p("Major questions that you can find answers in this report:"),
   tags$li("What is geographical distribution like with regard to
