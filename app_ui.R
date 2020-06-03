@@ -8,7 +8,11 @@ library(leaflet)
 library(plotly)
 
 tuition <- read.csv("data/tuition_cost.CSV", stringsAsFactors = FALSE)
-all.state <- unique(tuition$state)
+allstate_df <- tuition %>%
+  filter(!is.na(tuition$state))
+
+all.state <- unique(allstate_df$state)
+
 
 
 ui <- navbarPage( 
