@@ -1,6 +1,5 @@
 # Load libraries so they are available
 library(shiny)
-library(shinyWidgets)
 library(dplyr)
 library(ggplot2)
 library(maps)
