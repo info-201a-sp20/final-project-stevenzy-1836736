@@ -11,13 +11,14 @@ ui <- fluidPage(
     sidebarPanel(
       textInput(
         inputId = "college",
-        label = "Enter your college of interest"
-      )
+        label = "Enter your college of interest 
+        (pay attention to your spelling, for example, 
+        try 'University of Washington'."),
+      textOutput(outputId = "info")
     ),
   
     mainPanel(
-      leafletOutput(outputId = "map"),
-      tableOutput(outputId = "table")
+      leafletOutput(outputId = "map")
     )
   )
 )
