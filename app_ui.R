@@ -74,6 +74,7 @@ ui <- fluidPage(
     tabPanel(
       "Pie Chart",
       titlePanel("What is each type of school like in different state?"),
+      tags$br(),
       sidebarLayout(
         sidebarPanel(
           # select the state of user's interest
@@ -98,7 +99,7 @@ ui <- fluidPage(
     # Scatterplot page
     tabPanel(
       "Scatterplot",
-      titlePanel("Visual Representation of the Difference between in vs
+      tags$h3("Visual Representation of the Difference between in vs
                out State Tuition by Public and Private College"),
       p("The following graph shows in-state and out-of-state tuition separately
       of public, private, and for-profit colleges."),
@@ -126,9 +127,12 @@ ui <- fluidPage(
     tabPanel(
       "Summary",
       titlePanel("Takeaways from analysis"),
-      tags$p("1. Acording to the pie chart what show the proportion of school
-           type, in all 50 states, the proportion of public schools is
-           at least 50%."),
+      tags$br(),
+      tags$p("1. Acording to the pie chart which shows the proportion of school
+           type, in all the states, public shool and private school are the 
+             two major school types. And For Profit only oppupies a small proportion
+             of the state's school type. California, is the state which has the most
+             number of schools among all the state."),
       tags$p(
         "2. Acording to the scatterplot for public schools,
            most public schools have lower fees for in-state students and
@@ -137,7 +141,11 @@ ui <- fluidPage(
         "In contrast, most private schools and schools for profit have same
            fees for every student."
       ),
-      tags$p("3. Acording to the interactive map, ...")
+      tags$p("3. Acording to the interactive map, ..."),
+      tags$h2("Authors"),
+      tags$br(),
+      tags$p("Evelyn Sun, Zhenyu Huang, Benji Sun, Selena Li"),
+      tags$p("We are students taking INFO201 in Spring 2020")
     )
   )
 )
