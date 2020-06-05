@@ -20,7 +20,7 @@ ui <- navbarPage(
   #Introduction page
   tabPanel("Introduction",
     mainPanel(
-      tags$h3("Overview"),
+      tags$h2("Overview"),
       tags$p("This interactive report is generated to explore the data of tuition
              and fees by college/university for 2018-2019, along with school type,
               degree length, state, in-state vs out-of-state."),
@@ -52,6 +52,7 @@ ui <- navbarPage(
       )
     )
   ),
+  # Pie chart page
   tabPanel(
     "Pie Chart",
     titlePanel("What is each type of school like in different state?"),
@@ -67,27 +68,47 @@ ui <- navbarPage(
         tags$p("The purpose of this pie chart is to show the number of proportion of three
              different types of school: Public, Private, and For profit in different states.
              Users could choose their like of state and find out the result. ")
-    ))),
-    
-    
-    tabPanel(
-      "Scatterplot",
-      titlePanel("Visual Representation of the Difference between in vs out State Tuition by Public and Private College"),
-      p(
-        "The following graph shows in-state and out-of-state tuition separately of public, private, and for-profit colleges."
-      ), 
-      
-      sidebarLayout(
-        sidebarPanel(
-          # select the type of user's interest
-          selectInput(inputId = "Type",
-                      label = "Choose the type of college of your interest",
-                      choices = college_type), width = 4),
-        
-        mainPanel(
-          plotlyOutput(outputId = "plot1")
-        )
       )
-    ),
+    )
+  ),
+    
+  #Scatterplot page  
+  tabPanel(
+    "Scatterplot",
+    titlePanel("Visual Representation of the Difference between in vs
+               out State Tuition by Public and Private College"),
+    p("The following graph shows in-state and out-of-state tuition separately
+      of public, private, and for-profit colleges."), 
+    sidebarLayout(
+      sidebarPanel(
+        # select the type of user's interest
+        selectInput(inputId = "Type",
+                    label = "Choose the type of college of your interest",
+                    choices = college_type), width = 4
+      ),
+      mainPanel(
+        plotlyOutput(outputId = "plot1")
+      )
+    )
+  ),
+  
+  #Interactive map page
+  tabPanel(
+    "Interactive map"
+  ),
+  #Summary takeaways
+  tabPanel(
+    "Summary",
+    titlePanel("Takeaways from analysis"),
+    p("1. "),
+    p("2. "),
+    p("3. ")
+  )
+  
+  
+  
+  
+  
+  
 )
       
