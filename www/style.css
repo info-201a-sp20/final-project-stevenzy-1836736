@@ -1,12 +1,33 @@
-@import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
+p {
+  font-family: 'Arial';
+  font-size: 15px;
+  color: #000000;
+}
 
 h1 {
-  font-family: 'Lobster', cursive;
-  font-weight: 500;
-  line-height: 1.1;
-  color: #ad1d28;
+  font-family: 'Arial Black';
+  font-size: 35px;
+  color: #000000;
+  line-height: 0;
+}
+
+h2 {
+  font-family: 'Arial';
+  font-size: 30px;
+  color: #000000;
+  line-height: 0;
+}
+
+h3 {
+  font-family: 'Arial';
+  font-size: 20px;
+}
+
+li {
+  font-family: 'Arial';
+  font-size: 13px;
 }
 
 body {
-  background-color: #B7FFF6;
+  background-color: LightBlue;
 }

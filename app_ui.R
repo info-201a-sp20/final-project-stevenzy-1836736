@@ -17,11 +17,12 @@ all.state <- unique(allstate_df$state)
 
 ui <- fluidPage(includeCSS("www/style.css"),
         navbarPage(
-          title = "The US College Tuition Analysis",
+          tags$h1("The US College Tuition Analysis"),
           #Introduction page
           tabPanel("Introduction",
             mainPanel(
               tags$h2("Overview"),
+              tags$br(),
               tags$p("This interactive report is generated to explore the data of
                     tuition and fees by college/university for 2018-2019,
                     along with school type, degree length, state,
