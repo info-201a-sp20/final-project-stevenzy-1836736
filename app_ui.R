@@ -100,9 +100,16 @@ ui <- navbarPage(
   tabPanel(
     "Summary",
     titlePanel("Takeaways from analysis"),
-    p("1. "),
-    p("2. "),
-    p("3. ")
+    tags$p("1. Acording to the pie chart what show the proportion of school
+           type, in all 50 states, the proportion of public schools is
+           at least 50%."),
+    tags$p("2. Acording to the scatterplot for public schools,
+           most public schools have lower fees for in-state students and
+           higher for out-state students.",
+           tags$br(),
+           "In contrast, most private schools and schools for profit have same
+           fees for every student."),
+    tags$p("3. Acording to the interactive map, ...")
   )
   
   
