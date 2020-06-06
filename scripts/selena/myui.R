@@ -1,5 +1,3 @@
-# Question: What is the in-state tuition and out-of-state tuition of a college? (map)
-# What is the average tuition of a chosen state? (table)
 
 df <- read.csv("../../data/tuition_cost.csv", stringsAsFactors = F)
 
@@ -14,7 +12,13 @@ ui <- fluidPage(
         label = "Enter your college of interest 
         (pay attention to your spelling, for example, 
         try 'University of Washington'."),
-      textOutput(outputId = "info")
+      textOutput(outputId = "info"),
+      
+      selectInput(
+        inputId = "state",
+        label = "Choose your state of interest",
+        choices = states
+      )
     ),
   
     mainPanel(

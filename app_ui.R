@@ -58,9 +58,12 @@ ui <- fluidPage(
                   the relationship between them.")
         ),
         tags$li(
-          "Question 3",
-          tags$ul("To answer this question, we calculated the mean of public
-                  and private shool tuition for each state.")
+          "How can I know the in-state tuition and out-of-state tuition of each
+          college and the average in-state tuition and out-of-state tuition of
+          each state?",
+          tags$ul("To answer this question, we used a map to make the average tuition
+                  popup and we used a text input box to return in-state tuition and 
+                  out-of-state tuition based on the input college.")
         ),
         # setBackgroundColor(
         # color = "LightBlue",
@@ -121,7 +124,30 @@ ui <- fluidPage(
 
     # Interactive map page
     tabPanel(
-      "Interactive map"
+      "Interactive map",
+      tags$h3("Tuition Information"),
+      
+      sidebarLayout(
+        sidebarPanel(
+          textInput(
+            inputId = "college",
+            label = "Enter your college of interest 
+            (pay attention to your spelling, for example, 
+            try 'University of Washington'."),
+          textOutput(outputId = "info"),
+          
+          selectInput(
+            inputId = "state",
+            label = "Choose your state of interest",
+            choices = all.state
+          )
+        ),
+        
+        mainPanel(
+          leafletOutput(outputId = "map")
+        )
+      )
+    )
     ),
     # Summary takeaways
     tabPanel(

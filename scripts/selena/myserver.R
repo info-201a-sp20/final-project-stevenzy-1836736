@@ -6,16 +6,18 @@ df <- read.csv("../../data/tuition_cost.csv", stringsAsFactors = F)
 server <- function(input, output) {
   
   output$map <- renderLeaflet({
-    
-    avg_in_state <- df %>%
+    in_state <- df %>%
       group_by(state) %>%
       summarize(avg_in_state = mean(in_state_tuition))
     
-    avg_out_state <- df %>%
+    out_state <- df %>%
       group_by(state) %>%
       summarize(avg_out_state = mean(out_of_state_tuition))
-
-    leaflet(df) %>%
+    
+    new_df <- df %>%
+      filter(state == input$state)
+    
+    leaflet(new_df) %>%
       addProviderTiles("Stamen.TonerLite") %>%
       addCircleMarkers(
         lat = ~lat,

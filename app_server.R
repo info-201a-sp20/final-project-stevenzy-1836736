@@ -51,4 +51,48 @@ server <- function(input, output) {
         )
       plot1 <- ggplotly(plot1)
     })
+    
+    output$map <- renderLeaflet({
+      in_state <- df %>%
+        group_by(state) %>%
+        summarize(avg_in_state = mean(in_state_tuition))
+      
+      out_state <- df %>%
+        group_by(state) %>%
+        summarize(avg_out_state = mean(out_of_state_tuition))
+      
+      new_df <- df %>%
+        filter(state == input$state)
+      
+      leaflet(new_df) %>%
+        addProviderTiles("Stamen.TonerLite") %>%
+        addCircleMarkers(
+          lat = ~lat,
+          lng = ~long,
+          label = ~paste("Average In-state Tuition:", avg_in_state,
+                         "Average Out-state Tuition:", avg_out_state),
+          radius = 6,
+          stroke = FALSE
+        )
+      
+    })
+    
+    output$info <- renderText({
+      filtered_df <- df %>%
+        filter(name == input$college)
+      
+      in_state_tuition <- filtered_df %>%
+        pull(in_state_tuition)
+      
+      out_of_state_tuition <- filtered_df %>%
+        pull(out_of_state_tuition)
+      
+      msg <- paste0("The in-state tuition of ", input$college, " is $",
+                    in_state_tuition, ".",
+                    " And the out-state tuition of ", input$college, " is $",
+                    out_of_state_tuition, ".")
+      
+      return(msg)
+      
+    })
 }
