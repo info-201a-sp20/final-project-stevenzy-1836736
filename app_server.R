@@ -7,47 +7,51 @@ library(maps)
 library(plotly)
 library(sp)
 library(maptools)
-
+library(lintr)
 server <- function(input, output) {
-  
-# Pie chart 
-    output$PiePlot <- renderPlotly({
-      selected.data <- tuition %>%
+
+# Pie chart
+    output$piePlot <- renderPlotly({
+      selected_data <- tuition %>%
         filter(state == input$State)
   #calculate each school type number
-      public <- selected.data %>%
-        filter(type == "Public")%>%
+      public <- selected_data %>%
+        filter(type == "Public") %>%
         nrow()
-      
-      private <- selected.data %>%
-        filter(type == "Private")%>%
+
+      private <- selected_data %>%
+        filter(type == "Private") %>%
         nrow()
-      
-      profit <- selected.data %>%
-        filter(type == "For Profit")%>%
+
+      profit <- selected_data %>%
+        filter(type == "For Profit") %>%
         nrow()
 #set the legend name
       name <- c("Public", "Private", "For Profit")
       value <- c(public, private, profit)
-      
+
       result <- data.frame(value, name)
-# set the pir chart color      
-      colors <- c('rgb(211,94,96)', 'rgb(128,133,133)', 'rgb(144,103,167)')
-      
-      plot_ly(result, labels = ~name, values = ~value, type = 'pie') %>%
+# set the pir chart color
+      colors <- c("rgb(211,94,96)", "rgb(128,133,133)", "rgb(144,103,167)")
+
+      plot_ly(result, labels = ~name, values = ~value, type = "pie") %>%
         layout(
-          title = ~paste0("Percentage of each school type in state"),  
-          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
+          title = ~paste0("Percentage of each school type in state"),
+          xaxis = list(showgrid = FALSE, zeroline = FALSE,
+                       showticklabels = FALSE),
+          yaxis = list(showgrid = FALSE, zeroline = FALSE,
+                       showticklabels = FALSE)
         )
     })
-    
 
+    # This returns a graph where the type of college is what is chosen, and
+    # plot in-state and out-of-state tuition on x/y axis.
     output$plot1 <- renderPlotly({
       selected_data <- tuition %>%
         filter(type == input$Type)
       plot1 <- ggplot(data = selected_data) +
-        geom_point(mapping = aes(x = in_state_total, y = out_of_state_total, color = type)) +
+        geom_point(mapping = aes(x = in_state_total,
+                                 y = out_of_state_total, color = type)) +
         labs(
           title = "In-state vs Out-of-State Tuition",
           x = "In-State Tuition",
@@ -55,12 +59,12 @@ server <- function(input, output) {
         )
       plot1 <- ggplotly(plot1)
     })
-    
-    
+
+
     # The interactive map page output
     # displaying the map
     output$map <- renderLeaflet({
-      
+
       # pull the average in-state tuition of each state
       in_state <- tuition %>%
         group_by(state) %>%
@@ -71,7 +75,7 @@ server <- function(input, output) {
         group_by(state) %>%
         summarize(avg_out_state = mean(out_of_state_tuition)) %>%
         pull(avg_out_state)
-      
+
       # displaying the map
       map <- leaflet(data = tuition) %>%
         addProviderTiles("CartoDB.Positron") %>%
@@ -79,33 +83,34 @@ server <- function(input, output) {
           lat = ~lat,
           lng = ~long,
           popup = ~paste("State:", state,
-                         "Average In-state Tuition:", round(in_state), 
-                         "Average Out-state Tuition:", round(out_state), sep = "<br>")
+                         "Average In-state Tuition:", round(in_state),
+                         "Average Out-state Tuition:", round(out_state),
+                         sep = "<br>")
         )
     })
-    
+
     # returning text about the tuition information of the input college
     output$info <- renderText({
-      # filter the original dataframe, matching the input college with 
+      # filter the original dataframe, matching the input college with
       # that in the tuition data frame
       filtered_df <- tuition %>%
         filter(name == input$college)
-      
+
       # get the in-state tuition of the input college
       in_state_tuition <- filtered_df %>%
         pull(in_state_tuition)
-      
+
       # get the out-of-state tuition of the input college
       out_of_state_tuition <- filtered_df %>%
         pull(out_of_state_tuition)
-      
+
       # return the message that will be shown on the page
       msg <- paste0("The in-state tuition of ", input$college, " is $",
                     in_state_tuition, ".",
                     " And the out-state tuition of ", input$college, " is $",
                     out_of_state_tuition, ".")
-      
+
       return(msg)
-      
+
     })
 }
