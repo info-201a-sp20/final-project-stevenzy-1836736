@@ -114,4 +114,3 @@ server <- function(input, output) {
 
     })
 }
-lint("app_server.R")
