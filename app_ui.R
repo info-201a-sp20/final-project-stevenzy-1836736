@@ -148,7 +148,7 @@ ui <- fluidPage(
         )
       )
     )
-    ),
+    ,
     # Summary takeaways
     tabPanel(
       "Summary",
@@ -160,12 +160,14 @@ ui <- fluidPage(
              of the state's school type. California, is the state which has the most
              number of schools among all the state."),
       tags$p(
-        "2. Acording to the scatterplot for public schools,
-           most public schools have lower fees for in-state students and
-           higher for out-state students.",
+        "2. Acording to the scatterplot, almost every private school has the
+        same tuition for both in-state and out-of-state student. However, for 
+        public schools, in-state students pay much less than out-of-state 
+        student.",
         tags$br(),
-        "In contrast, most private schools and schools for profit have same
-           fees for every student."
+        "An insight drawn here is that besides the public college 
+        of state a student lives in that a student can take tuition 
+        advantage of, every other college's tuitions cost more."
       ),
       tags$p("3. Acording to the interactive map, ..."),
       tags$h2("Authors"),
@@ -175,3 +177,4 @@ ui <- fluidPage(
     )
   )
 )
+
