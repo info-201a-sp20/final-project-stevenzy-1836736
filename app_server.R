@@ -42,7 +42,8 @@ server <- function(input, output) {
         )
     })
     
-
+    # This returns a graph where the type of college is what is chosen, and
+    # plot in-state and out-of-state tuition on x/y axis.
     output$plot1 <- renderPlotly({
       selected_data <- tuition %>%
         filter(type == input$Type)
