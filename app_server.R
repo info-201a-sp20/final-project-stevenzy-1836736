@@ -53,15 +53,15 @@ server <- function(input, output) {
     })
     
     output$map <- renderLeaflet({
-      in_state <- df %>%
+      in_state <- tuition %>%
         group_by(state) %>%
         summarize(avg_in_state = mean(in_state_tuition))
       
-      out_state <- df %>%
+      out_state <- tuition %>%
         group_by(state) %>%
         summarize(avg_out_state = mean(out_of_state_tuition))
       
-      new_df <- df %>%
+      new_df <- tuition %>%
         filter(state == input$state)
       
       leaflet(new_df) %>%
@@ -69,8 +69,8 @@ server <- function(input, output) {
         addCircleMarkers(
           lat = ~lat,
           lng = ~long,
-          label = ~paste("Average In-state Tuition:", avg_in_state,
-                         "Average Out-state Tuition:", avg_out_state),
+          label = ~paste("Average In-state Tuition:", in_state,
+                         "Average Out-state Tuition:", out_state),
           radius = 6,
           stroke = FALSE
         )
@@ -78,7 +78,7 @@ server <- function(input, output) {
     })
     
     output$info <- renderText({
-      filtered_df <- df %>%
+      filtered_df <- tuition %>%
         filter(name == input$college)
       
       in_state_tuition <- filtered_df %>%

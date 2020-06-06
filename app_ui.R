@@ -14,7 +14,6 @@ allstate_df <- tuition %>%
   filter(!is.na(tuition$state))
 all.state <- unique(allstate_df$state)
 
-
 ui <- fluidPage(
   includeCSS("www/style.css"),
   navbarPage(
