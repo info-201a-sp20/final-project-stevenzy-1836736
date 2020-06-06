@@ -135,11 +135,6 @@ ui <- fluidPage(
             try 'University of Washington'."),
           textOutput(outputId = "info"),
           
-          selectInput(
-            inputId = "state",
-            label = "Choose your state of interest",
-            choices = all.state
-          )
         ),
         
         mainPanel(

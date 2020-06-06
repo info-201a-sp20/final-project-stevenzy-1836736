@@ -54,9 +54,11 @@ server <- function(input, output) {
       plot1 <- ggplotly(plot1)
     })
     
+    
+    
     output$map <- renderLeaflet({
-      new_df <- tuition %>%
-        filter(state == input$state)
+      # new_df <- tuition %>%
+      #   filter(state == input$state)
       
       in_state <- tuition %>%
         group_by(state) %>%
@@ -68,14 +70,13 @@ server <- function(input, output) {
         summarize(avg_out_state = mean(out_of_state_tuition)) %>%
         pull(avg_out_state)
       
-      new_df %>%
-        leaflet() %>%
-        addTiles() %>%
-        addPolygons(
-          popup = ~paste("Average In-state Tuition:", avg_in_state, ";",
-                         "Average Out-state Tuition:", avg_out_state),
-          fillColor = topo.colors(5, alpha = NULL),
-          stroke = FALSE
+      map <- leaflet(data = tuition) %>%
+        addProviderTiles("CartoDB.Positron") %>%
+        addMarkers(
+          lat = ~lat,
+          lng = ~long,
+          popup = paste("Average In-state Tuition:", round(in_state), 
+                         "Average Out-state Tuition:", round(out_state), sep = "<br>")
         )
     })
     
