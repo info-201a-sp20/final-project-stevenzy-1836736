@@ -154,7 +154,7 @@ ui <- fluidPage(
       "Summary",
       titlePanel("Takeaways from analysis"),
       tags$br(),
-      tags$p("1. Acording to the pie chart which shows the proportion of school
+      tags$p("1. According to the pie chart which shows the proportion of school
            type, in all the states, public shool and private school are the 
              two major school types. And For Profit only oppupies a small proportion
              of the state's school type. California, is the state which has the most
@@ -166,10 +166,10 @@ ui <- fluidPage(
         student.",
         tags$br(),
         "An insight drawn here is that besides the public college 
-        of state a student lives in that a student can take tuition 
+        of a state a student lives in that a student can take tuition 
         advantage of, every other college's tuitions cost more."
       ),
-      tags$p("3. Acording to the interactive map, ..."),
+      tags$p("3. According to the interactive map, ..."),
       tags$h2("Authors"),
       tags$br(),
       tags$p("Evelyn Sun, Zhenyu Huang, Benji Sun, Selena Li"),
@@ -177,4 +177,5 @@ ui <- fluidPage(
     )
   )
 )
+
 
