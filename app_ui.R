@@ -7,7 +7,7 @@ library(maps)
 library(leaflet)
 library(plotly)
 
-tuition <- read.csv("data/tuition_cost.CSV", stringsAsFactors = FALSE)
+tuition <- read.csv("data/tuition_cost.csv", stringsAsFactors = FALSE)
 tuition <- filter(tuition, !is.na(tuition$room_and_board))
 college_type <- unique(tuition$type)
 allstate_df <- tuition %>%
