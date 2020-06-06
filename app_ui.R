@@ -89,7 +89,7 @@ ui <- fluidPage(
           width = 4
         ),
         mainPanel(
-          plotlyOutput("PiePlot"),
+          plotlyOutput("piePlot"),
           tags$p("The purpose of this pie chart is to show the number of
                       proportion of three different types of school:
                       Public, Private, and For profit in different states.
