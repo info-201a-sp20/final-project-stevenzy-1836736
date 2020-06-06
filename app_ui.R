@@ -6,7 +6,7 @@ library(ggplot2)
 library(maps)
 library(leaflet)
 library(plotly)
-library(lintr)
+
 tuition <- read.csv("data/tuition_cost.CSV", stringsAsFactors = FALSE)
 tuition <- filter(tuition, !is.na(tuition$room_and_board))
 college_type <- unique(tuition$type)
@@ -142,7 +142,10 @@ ui <- fluidPage(
         ),
         # main panel, displaying the map
         mainPanel(
-          leafletOutput(outputId = "map")
+          leafletOutput(outputId = "map"),
+          tags$p("This map is intended to show the users the average in-state
+                 and out-of state tuition of each state, based on which state 
+                 the user clicks on.")
         )
       )
     )
@@ -160,7 +163,7 @@ ui <- fluidPage(
              possible to predict the school number according to proportion in
              each state."),
       tags$p(
-        "2. Acording to the scatterplot, almost every private school has the
+        "2. According to the scatterplot, almost every private school has the
         same tuition for both in-state and out-of-state student. However, for
         public schools, in-state students pay much less than out-of-state
         student.",
@@ -175,7 +178,9 @@ ui <- fluidPage(
              interested college; then we can conclude about the
              average in-state and out-of-state tuition
              of each state by clicking on the circles,
-             based on the map's popups"),
+             based on the map's popups. From this page, we can 
+             then get the tuition information about the colleges
+             much easier."),
       tags$h2("Authors"),
       tags$br(),
       tags$p("Evelyn Sun, Zhenyu Huang, Benji Sun, Selena Li"),
