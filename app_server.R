@@ -5,6 +5,8 @@ library(dplyr)
 library(ggplot2)
 library(maps)
 library(plotly)
+library(sp)
+library(maptools)
 
 server <- function(input, output) {
     output$PiePlot <- renderPlotly({
@@ -53,28 +55,28 @@ server <- function(input, output) {
     })
     
     output$map <- renderLeaflet({
-      in_state <- tuition %>%
-        group_by(state) %>%
-        summarize(avg_in_state = mean(in_state_tuition))
-      
-      out_state <- tuition %>%
-        group_by(state) %>%
-        summarize(avg_out_state = mean(out_of_state_tuition))
-      
       new_df <- tuition %>%
         filter(state == input$state)
       
-      leaflet(new_df) %>%
-        addProviderTiles("Stamen.TonerLite") %>%
-        addCircleMarkers(
-          lat = ~lat,
-          lng = ~long,
-          label = ~paste("Average In-state Tuition:", in_state,
-                         "Average Out-state Tuition:", out_state),
-          radius = 6,
+      in_state <- tuition %>%
+        group_by(state) %>%
+        summarize(avg_in_state = mean(in_state_tuition)) %>%
+        pull(avg_in_state)
+      
+      out_state <- tuition %>%
+        group_by(state) %>%
+        summarize(avg_out_state = mean(out_of_state_tuition)) %>%
+        pull(avg_out_state)
+      
+      new_df %>%
+        leaflet() %>%
+        addTiles() %>%
+        addPolygons(
+          popup = ~paste("Average In-state Tuition:", avg_in_state, ";",
+                         "Average Out-state Tuition:", avg_out_state),
+          fillColor = topo.colors(5, alpha = NULL),
           stroke = FALSE
         )
-      
     })
     
     output$info <- renderText({
