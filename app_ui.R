@@ -28,7 +28,7 @@ ui <- fluidPage(
                     tuition and fees by college/university for 2018-2019,
                     along with school type, degree length, state,
                     in-state vs out-of-state."),
-        img(src = "tuition.JPG", height = 350, width = 450),
+        img(src = "tuition.jpg", height = 350, width = 450),
         tags$h3("Where the data is from:"),
         tags$p(
           "The data come from many different sources but originally
