@@ -154,24 +154,23 @@ ui <- fluidPage(
       "Summary",
       titlePanel("Takeaways from analysis"),
       tags$br(),
-      tags$p("1. Acording to the pie chart which shows the proportion of school
+      tags$p("1. According to the pie chart which shows the proportion of school
            type, in all the states, public shool and private school are the 
              two major school types. And For Profit only oppupies a small proportion
              of the state's school type. California, is the state which has the most
              number of schools among all the state."),
       tags$p(
-        "2. Acording to the scatterplot for public schools,
+        "2. According to the scatterplot for public schools,
            most public schools have lower fees for in-state students and
            higher for out-state students.",
         tags$br(),
         "In contrast, most private schools and schools for profit have same
            fees for every student."
       ),
-      tags$p("3. Acording to the interactive map, ..."),
+      tags$p("3. According to the interactive map, ..."),
       tags$h2("Authors"),
       tags$br(),
       tags$p("Evelyn Sun, Zhenyu Huang, Benji Sun, Selena Li"),
       tags$p("We are students taking INFO201 in Spring 2020")
     )
   )
-)
