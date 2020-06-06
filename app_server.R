@@ -9,10 +9,12 @@ library(sp)
 library(maptools)
 
 server <- function(input, output) {
+  
+# Pie chart 
     output$PiePlot <- renderPlotly({
       selected.data <- tuition %>%
         filter(state == input$State)
-      
+  #calculate each school type number
       public <- selected.data %>%
         filter(type == "Public")%>%
         nrow()
@@ -24,12 +26,12 @@ server <- function(input, output) {
       profit <- selected.data %>%
         filter(type == "For Profit")%>%
         nrow()
-      
+#set the legend name
       name <- c("Public", "Private", "For Profit")
       value <- c(public, private, profit)
       
       result <- data.frame(value, name)
-      
+# set the pir chart color      
       colors <- c('rgb(211,94,96)', 'rgb(128,133,133)', 'rgb(144,103,167)')
       
       plot_ly(result, labels = ~name, values = ~value, type = 'pie') %>%

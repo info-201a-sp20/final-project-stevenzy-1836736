@@ -60,4 +60,9 @@ myserver <- function(input, output){
 
 shinyApp(ui = myui, server = myserver)
 
-
+g <- list(
+  scope = 'usa',
+  projection = list(type = 'albers usa'),
+  showlakes = TRUE,
+  lakecolor = toRGB('white')
+)

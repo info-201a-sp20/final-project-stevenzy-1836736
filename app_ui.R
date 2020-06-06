@@ -6,7 +6,7 @@ library(ggplot2)
 library(maps)
 library(leaflet)
 library(plotly)
-
+library(lintr)
 tuition <- read.csv("data/tuition_cost.CSV", stringsAsFactors = FALSE)
 tuition <- filter(tuition, !is.na(tuition$room_and_board))
 college_type <- unique(tuition$type)
@@ -60,16 +60,17 @@ ui <- fluidPage(
           "How can I know the in-state tuition and out-of-state tuition of each
           college and the average in-state tuition and out-of-state tuition of
           each state?",
-          tags$ul("To answer this question, we used a map to make the average tuition
-                  popup and we used a text input box to return in-state tuition and 
-                  out-of-state tuition based on the input college.")
+        tags$ul("To answer this question, we used a map to make the average
+          tuition popup and we used a text input box to return
+          in-state tuition and out-of-state tuition based on the input
+          college.")
         ),
-        # setBackgroundColor(
-        # color = "LightBlue",
-        # gradient = c("linear", "radial"),
-        # direction = c("bottom", "top", "right", "left"),
-        # shinydashboard = FALSE
-        # )
+        setBackgroundColor(
+        color = "LightBlue",
+        gradient = c("linear", "radial"),
+        direction = c("bottom", "top", "right", "left"),
+        shinydashboard = FALSE
+        )
       )
     ),
     # Pie chart page
@@ -126,18 +127,18 @@ ui <- fluidPage(
       "Interactive map",
       # header of the interactive map page
       tags$h3("Tuition Information"),
-      
+
       sidebarLayout(
         # side panel, displaying sidebar layouts
         sidebarPanel(
           # allow users to input the college name of their interest
           textInput(
             inputId = "college",
-            label = "Enter your college of interest 
-            (pay attention to your spelling, for example, 
+            label = "Enter your college of interest
+            (pay attention to your spelling, for example,
             try 'University of Washington'."),
           textOutput(outputId = "info")
-          
+
         ),
         # main panel, displaying the map
         mainPanel(
@@ -152,25 +153,29 @@ ui <- fluidPage(
       titlePanel("Takeaways from analysis"),
       tags$br(),
       tags$p("1. According to the pie chart which shows the proportion of school
-           type, in all the states, public shool and private school are the 
-             two major school types. And For Profit only oppupies a small proportion
-             of the state's school type. California, is the state which has the most
-             number of schools among all the state."),
+           type, in all the states, public shool and private school are the
+             two major school types. And For Profit oppupies a small proportion
+             of the state's school type. California is the state which has most
+             number of schools among all the state. With this insignt, it is
+             possible to predict the school number according to proportion in
+             each state."),
       tags$p(
         "2. Acording to the scatterplot, almost every private school has the
-        same tuition for both in-state and out-of-state student. However, for 
-        public schools, in-state students pay much less than out-of-state 
+        same tuition for both in-state and out-of-state student. However, for
+        public schools, in-state students pay much less than out-of-state
         student.",
         tags$br(),
-        "An insight drawn here is that besides the public college 
-        of a state a student lives in that a student can take tuition 
+        "An insight drawn here is that besides the public college
+        of a state a student lives in that a student can take tuition
         advantage of, every other college's tuitions cost more."
       ),
-      tags$p("3. According to the interactive map page, first we can know the 
+      tags$p("3. According to the interactive map page, first we can know the
              tuition information of a college (in-state tuition and out-of-state
-             tuition) based on the user input of their interested college; then we
-             can conclude about the average in-state and out-of-state tuition
-             of each state by clicking on the circles, based on the map's popups"),
+             tuition) based on the user input of their
+             interested college; then we can conclude about the
+             average in-state and out-of-state tuition
+             of each state by clicking on the circles,
+             based on the map's popups"),
       tags$h2("Authors"),
       tags$br(),
       tags$p("Evelyn Sun, Zhenyu Huang, Benji Sun, Selena Li"),
@@ -178,5 +183,3 @@ ui <- fluidPage(
     )
   )
 )
-
-
