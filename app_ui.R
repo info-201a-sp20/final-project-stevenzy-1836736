@@ -124,19 +124,22 @@ ui <- fluidPage(
     # Interactive map page
     tabPanel(
       "Interactive map",
+      # header of the interactive map page
       tags$h3("Tuition Information"),
       
       sidebarLayout(
+        # side panel, displaying sidebar layouts
         sidebarPanel(
+          # allow users to input the college name of their interest
           textInput(
             inputId = "college",
             label = "Enter your college of interest 
             (pay attention to your spelling, for example, 
             try 'University of Washington'."),
-          textOutput(outputId = "info"),
+          textOutput(outputId = "info")
           
         ),
-        
+        # main panel, displaying the map
         mainPanel(
           leafletOutput(outputId = "map")
         )
@@ -163,7 +166,11 @@ ui <- fluidPage(
         of a state a student lives in that a student can take tuition 
         advantage of, every other college's tuitions cost more."
       ),
-      tags$p("3. According to the interactive map, ..."),
+      tags$p("3. According to the interactive map page, first we can know the 
+             tuition information of a college (in-state tuition and out-of-state
+             tuition) based on the user input of their interested college; then we
+             can conclude about the average in-state and out-of-state tuition
+             of each state by clicking on the circles, based on the map's popups"),
       tags$h2("Authors"),
       tags$br(),
       tags$p("Evelyn Sun, Zhenyu Huang, Benji Sun, Selena Li"),

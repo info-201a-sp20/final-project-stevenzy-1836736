@@ -55,41 +55,49 @@ server <- function(input, output) {
     })
     
     
-    
+    # The interactive map page output
+    # displaying the map
     output$map <- renderLeaflet({
-      # new_df <- tuition %>%
-      #   filter(state == input$state)
       
+      # pull the average in-state tuition of each state
       in_state <- tuition %>%
         group_by(state) %>%
         summarize(avg_in_state = mean(in_state_tuition)) %>%
         pull(avg_in_state)
-      
+      # pull the average out-of-state tuition of each state
       out_state <- tuition %>%
         group_by(state) %>%
         summarize(avg_out_state = mean(out_of_state_tuition)) %>%
         pull(avg_out_state)
       
+      # displaying the map
       map <- leaflet(data = tuition) %>%
         addProviderTiles("CartoDB.Positron") %>%
         addMarkers(
           lat = ~lat,
           lng = ~long,
-          popup = paste("Average In-state Tuition:", round(in_state), 
+          popup = ~paste("State:", state,
+                         "Average In-state Tuition:", round(in_state), 
                          "Average Out-state Tuition:", round(out_state), sep = "<br>")
         )
     })
     
+    # returning text about the tuition information of the input college
     output$info <- renderText({
+      # filter the original dataframe, matching the input college with 
+      # that in the tuition data frame
       filtered_df <- tuition %>%
         filter(name == input$college)
       
+      # get the in-state tuition of the input college
       in_state_tuition <- filtered_df %>%
         pull(in_state_tuition)
       
+      # get the out-of-state tuition of the input college
       out_of_state_tuition <- filtered_df %>%
         pull(out_of_state_tuition)
       
+      # return the message that will be shown on the page
       msg <- paste0("The in-state tuition of ", input$college, " is $",
                     in_state_tuition, ".",
                     " And the out-state tuition of ", input$college, " is $",
