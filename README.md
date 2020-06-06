@@ -39,3 +39,5 @@ College major
   1. Which major category does the specific major belong to?
   2. What is the unemployed rate of a major?
   3. How many people are enrolled in a major?
+  
+ [Here is our Shiny App!](https://yushan.shinyapps.io/final-project/ "The US College Tuition Analysis")
